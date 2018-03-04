@@ -7,11 +7,6 @@
 [ext_resource path="res://assets/planet4.png" type="Texture" id=5]
 [ext_resource path="res://assets/mars.png" type="Texture" id=6]
 
-
-
-
-
-
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends Node2D

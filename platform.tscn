@@ -13,10 +13,10 @@ script/source = "extends Node2D
 var pos 
 
 var posplus 
-var earth = preload(\"res://e1.png\")
-var yellow = preload(\"res://planet2.png\")
-var grey = preload(\"res://planet3.png\")
-var green = preload(\"res://planet4.png\")
+var earth = preload(\"res://assets/e1.png\")
+var yellow = preload(\"res://assets/planet2.png\")
+var grey = preload(\"res://assets/planet3.png\")
+var green = preload(\"res://assets/planet4.png\")
 var skins = [earth ,yellow, grey, green ]
 onready var collider = get_node(\"PlanetBody\")
 var speed

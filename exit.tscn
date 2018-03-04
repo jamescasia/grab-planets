@@ -1,0 +1,181 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://pausebg.png" type="Texture" id=1]
+[ext_resource path="res://menupause.png" type="Texture" id=2]
+[ext_resource path="res://font.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://yes2.png" type="Texture" id=4]
+[ext_resource path="res://yes.png" type="Texture" id=5]
+[ext_resource path="res://no2.png" type="Texture" id=6]
+[ext_resource path="res://no.png" type="Texture" id=7]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+onready var a = get_node(\"yess/Sprite\")
+onready var b = get_node(\"yess/Sprite1\")
+onready var c = get_node(\"no/Sprite\")
+onready var d = get_node(\"no/Sprite1\")
+func _ready():
+	set_hidden(true)
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_yes_button_down():
+	a.set_hidden(true)
+	b.set_hidden(false)
+	a.set_scale(Vector2(0.96, 0.96))
+	b.set_scale(Vector2(0.96, 0.96))
+	pass # replace with function body
+
+
+func _on_yes_button_up():
+	b.set_hidden(true)
+	a.set_hidden(false)
+	a.set_scale(Vector2(1, 1))
+	b.set_scale(Vector2(1, 1))
+	pass # replace with function body
+
+
+func _on_yes_pressed():
+	get_tree().quit()
+	pass # replace with function body
+
+
+func _on_no_button_down():
+	c.set_hidden(true)
+	d.set_hidden(false)
+	c.set_scale(Vector2(0.96, 0.96))
+	d.set_scale(Vector2(0.96, 0.96))
+	pass # replace with function body
+
+
+func _on_no_button_up():
+	d.set_hidden(true)
+	c.set_hidden(false)
+	c.set_scale(Vector2(1, 1))
+	d.set_scale(Vector2(1, 1))
+	pass # replace with function body
+
+
+func _on_no_pressed():
+	set_hidden(true)
+	pass # replace with function body
+"
+
+[node name="exit" type="Node2D"]
+
+transform/pos = Vector2( 240, 400 )
+script/script = SubResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+
+rect/scale = Vector2( 0.4, 0.4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -180.0
+margin/top = -74.0
+margin/right = 760.0
+margin/bottom = 298.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.941176, 0.803922, 0.337255, 1 )
+custom_colors/font_color_shadow = Color( 0.807843, 0.568627, 0.141176, 1 )
+text = "Do you really 
+want to quit?"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="yess" type="Node2D" parent="."]
+
+transform/pos = Vector2( -60, 125 )
+transform/scale = Vector2( 0.6, 0.6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite1" type="Sprite" parent="yess"]
+
+transform/pos = Vector2( 0, -1 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="yess"]
+
+texture = ExtResource( 5 )
+
+[node name="yes" type="Button" parent="yess"]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -102.0
+margin/top = -98.0
+margin/right = 101.0
+margin/bottom = 98.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="no" type="Node2D" parent="."]
+
+transform/pos = Vector2( 60, 125 )
+transform/scale = Vector2( 0.6, 0.6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite1" type="Sprite" parent="no"]
+
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="no"]
+
+texture = ExtResource( 7 )
+
+[node name="no" type="Button" parent="no"]
+
+visibility/opacity = 0.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -102.0
+margin/top = -97.0
+margin/right = 98.0
+margin/bottom = 100.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[connection signal="button_down" from="yess/yes" to="." method="_on_yes_button_down"]
+
+[connection signal="button_up" from="yess/yes" to="." method="_on_yes_button_up"]
+
+[connection signal="pressed" from="yess/yes" to="." method="_on_yes_pressed"]
+
+[connection signal="button_down" from="no/no" to="." method="_on_no_button_down"]
+
+[connection signal="button_up" from="no/no" to="." method="_on_no_button_up"]
+
+[connection signal="pressed" from="no/no" to="." method="_on_no_pressed"]
+
+

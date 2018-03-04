@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://e1.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D
+#FRIENDLY PLANETS ONLY  NORMAL PLANETS
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+#TYPES OF PLATFORMS NORMAL , INSTAEXLPODING(MUST NOT LAND), ABERRANT (VARYING SPEEDS), AFTEREXPLODING
+var pos 
+
+var posplus 
+var earth = preload(\"res://e1.png\")
+var yellow = preload(\"res://planet2.png\")
+var grey = preload(\"res://planet3.png\")
+var green = preload(\"res://planet4.png\")
+var skins = [earth ,yellow, grey, green ]
+onready var collider = get_node(\"PlanetBody\")
+var speed
+onready var skin = get_node(\"Sprite\")
+func _ready():
+	randomize()
+	pos = Vector2( int(rand_range(40,420) ),   Globals.get(\"playerPos\").y -800)
+	skin.set_texture(skins[int(rand_range(0,4))])
+	speed = int(rand_range( 0,700))
+	set_fixed_process(true)
+	pass
+func _fixed_process(delta):
+	print(\"a:\" + str( collider.get_overlapping_areas().size()))
+	
+	if  collider.get_overlapping_areas().size() >0:
+		print(collider.get_overlapping_areas()[0])
+	
+	 
+	if !Globals.get(\"globalStillFiring\")  and Globals.get(\"globalshot\") == collider:
+		 
+		orbit(delta)
+		
+	 
+func orbit(delta):
+	set_pos(pos)
+	if pos.x >=425 and pos.x <=435:
+		posplus = true
+	if pos.x >= 40 and pos.x <= 50:
+		posplus = false
+	if posplus : 
+		pos.x-=speed*delta 
+	elif !posplus :
+		pos.x+=speed*delta 
+ 
+		
+		
+	
+"
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 50.0
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Area2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+var a = \"Sadad\"
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+"
+
+[node name="body" type="Node2D"]
+
+script/script = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+
+[node name="PlanetBody" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 6.31973, -3.18585 )
+shapes/0/trigger = false
+space_override = 3
+gravity_point = true
+gravity_vec = Vector2( 0, 0 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetBody"]
+
+transform/pos = Vector2( 6.31973, -3.18585 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+

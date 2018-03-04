@@ -11,8 +11,7 @@ onready var b = get_node("Sprite1")
 var ass = preload("res://Game.tscn")
 
 var asss = preload("res://menu.tscn")
-var asses = preload("res://exit.tscn")
-var assnicam = preload("res://intro.tscn") 
+var asses = preload("res://exit.tscn") 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	exit.set_hidden(true)

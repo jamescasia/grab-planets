@@ -1,13 +1,14 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=24 format=1]
 
-[ext_resource path="res://assets/GrabPlanets.jpg" type="Texture" id=1]
-[ext_resource path="res://assets/foreground.png" type="Texture" id=2]
-[ext_resource path="res://player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/e1.png" type="Texture" id=4]
-[ext_resource path="res://assets/planet2.png" type="Texture" id=5]
-[ext_resource path="res://assets/planet3.png" type="Texture" id=6]
-[ext_resource path="res://assets/planet4.png" type="Texture" id=7]
-[ext_resource path="res://assets/mars.png" type="Texture" id=8]
+[ext_resource path="res://assets/bgtemp.png" type="Texture" id=1]
+[ext_resource path="res://assets/cloud1.png" type="Texture" id=2]
+[ext_resource path="res://assets/cloud2.png" type="Texture" id=3]
+[ext_resource path="res://player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/e1.png" type="Texture" id=5]
+[ext_resource path="res://assets/planet2.png" type="Texture" id=6]
+[ext_resource path="res://assets/planet3.png" type="Texture" id=7]
+[ext_resource path="res://assets/planet4.png" type="Texture" id=8]
+[ext_resource path="res://assets/mars.png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=1]
 
@@ -42,6 +43,33 @@ func _fixed_process(delta):
 #	add_child(b )
 #	add_child(c )
 # "
+
+[sub_resource type="Animation" id=14]
+
+resource/name = "New Anim"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 2 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -16.1444, 151.637 ), Vector2( 300, 151.637 ), Vector2( -16.1444, 151.637 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite1:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1, 2 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 452.247, 623.387 ), Vector2( 150, 623.387 ), Vector2( 452.247, 623.387 ) ]
+}
 
 [sub_resource type="GDScript" id=2]
 
@@ -355,39 +383,43 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="background/bg"]
 
-transform/pos = Vector2( 240, 400 )
+transform/pos = Vector2( 240, 0 )
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( 0, 0, 480, 800 )
-
-[node name="Sprite1" type="Sprite" parent="background/bg"]
-
-transform/pos = Vector2( 240, -400 )
-texture = ExtResource( 1 )
-region = true
-region_rect = Rect2( 0, 0, 480, 800 )
+region_rect = Rect2( 0, 0, 480, 1600 )
 
 [node name="foreground" type="ParallaxLayer" parent="background"]
 
-motion/scale = Vector2( 0.6, 0.6 )
+motion/scale = Vector2( 0.1, 0.1 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="background/foreground"]
 
-transform/pos = Vector2( 240, 400 )
+visibility/opacity = 0.7
+transform/pos = Vector2( -16.1444, 151.637 )
+transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
-region = true
-region_rect = Rect2( 0, 0, 480, 800 )
 
 [node name="Sprite1" type="Sprite" parent="background/foreground"]
 
-transform/pos = Vector2( 240, -400 )
-texture = ExtResource( 2 )
-region = true
-region_rect = Rect2( 0, 0, 480, 800 )
+visibility/opacity = 0.8
+transform/pos = Vector2( 452.247, 623.387 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
 
-[node name="player" parent="." instance=ExtResource( 3 )]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/foreground"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+"anims/New Anim" = SubResource( 14 )
+playback/active = true
+playback/speed = 0.2
+blend_times = [  ]
+autoplay = "New Anim"
+
+[node name="player" parent="." instance=ExtResource( 4 )]
 
 z/z = 1
 
@@ -418,7 +450,7 @@ script/script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Earth"]
 
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="PlanetBody" type="Area2D" parent="Earth"]
 
@@ -446,7 +478,7 @@ script/script = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Yellow"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="PlanetBody1" type="Area2D" parent="Yellow"]
 
@@ -474,7 +506,7 @@ script/script = SubResource( 8 )
 
 [node name="Sprite" type="Sprite" parent="moon"]
 
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="PlanetBody2" type="Area2D" parent="moon"]
 
@@ -502,7 +534,7 @@ script/script = SubResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="green"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="PlanetBody3" type="Area2D" parent="green"]
 
@@ -530,7 +562,7 @@ script/script = SubResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="red"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="PlanetBody3" type="Area2D" parent="red"]
 

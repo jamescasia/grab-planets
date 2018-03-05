@@ -94,8 +94,8 @@ func _ready():
 	
 	pass
 func _fixed_process(delta):  
-	#pos = Vector2(int(rand_range(40,420) ) ,  Globals.get(\"greenPos\" ) -350 )
-	Globals.set(\"earthPos\" , pos )
+#	pos = Vector2(int(rand_range(40,420) ) ,  Globals.get(\"greenPos\" ).y -350 )
+#	Globals.set(\"earthPos\" , pos )
 	print(\"shotted\" +  str(Globals.get(\"globalshot\") )+ \"firing?\" + str(Globals.get(\"stillFiring\") ))
 	print(collider)
 	if  Globals.get(\"globalshot\")== collider :
@@ -105,6 +105,7 @@ func _fixed_process(delta):
  
 	else:
 		orbit(delta)
+	 
 	 
 func orbit(delta):
 	set_pos(pos)
@@ -155,8 +156,8 @@ func _ready():
 	
 	pass
 func _fixed_process(delta):   
-	Globals.set(\"yellowPos\" ,  pos )
-	#pos = Vector2( int(rand_range(40,420) ), Globals.get(\"earthPos\") .y-350)
+#	Globals.set(\"yellowPos\" ,  pos )
+#	pos = Vector2( int(rand_range(40,420) ), Globals.get(\"earthPos\") .y-350)
 	if  Globals.get(\"globalshot\")== collider :
 		
 		if !Globals.get(\"stillFiring\") :
@@ -215,8 +216,8 @@ func _ready():
 	
 	pass
 func _fixed_process(delta):  
-	#pos = Vector2( int(rand_range(40,420) ), Globals.get(\"yellowPos\").y -350)
-	Globals.set(\"moonPos\" ,  pos )
+#	pos = Vector2( int(rand_range(40,420) ), Globals.get(\"yellowPos\").y -350)
+#	Globals.set(\"moonPos\" ,  pos )
 	if  Globals.get(\"globalshot\")== collider :
 		
 		if !Globals.get(\"stillFiring\") :
@@ -269,8 +270,8 @@ func _ready():
 	
 	pass
 func _fixed_process(delta):  
-	#pos = Vector2( int(rand_range(40,420) ), Globals.get(\"moonPos\") .y-350)
-	Globals.set(\"greenPos\" ,  pos )
+#	pos = Vector2( int(rand_range(40,420) ), Globals.get(\"moonPos\") .y-350)
+#	Globals.set(\"greenPos\" ,  pos )
 	if  Globals.get(\"globalshot\")== collider :
 		
 		if !Globals.get(\"stillFiring\") :
@@ -325,8 +326,8 @@ func _ready():
 	
 	pass
 func _fixed_process(delta):  
-	#pos = Vector2( int(rand_range(40,420) ), Globals.get(\"moonPos\") .y-350)
-	Globals.set(\"marsPos\" ,  pos )
+#	pos = Vector2( int(rand_range(40,420) ), Globals.get(\"moonPos\") .y-350)
+#	Globals.set(\"marsPos\" ,  pos )
 	if  Globals.get(\"globalshot\")== collider :
 		
 		if !Globals.get(\"stillFiring\") :

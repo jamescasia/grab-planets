@@ -383,7 +383,6 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="background/bg"]
 
-visibility/visible = false
 transform/pos = Vector2( 240, 0 )
 texture = ExtResource( 1 )
 region = true

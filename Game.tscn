@@ -44,7 +44,7 @@ func _fixed_process(delta):
 #	add_child(c )
 # "
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=2]
 
 resource/name = "New Anim"
 length = 2.0
@@ -71,7 +71,7 @@ tracks/1/keys = {
 "values": [ Vector2( 452.247, 623.387 ), Vector2( 150, 623.387 ), Vector2( 452.247, 623.387 ) ]
 }
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Node2D
 #FRIENDLY PLANETS ONLY  NORMAL PLANETS
@@ -122,17 +122,17 @@ func orbit(delta):
 	
 "
 
-[sub_resource type="CircleShape2D" id=3]
-
-custom_solver_bias = 0.0
-radius = 50.0
-
 [sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
 radius = 50.0
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="CircleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 50.0
+
+[sub_resource type="GDScript" id=6]
 
 script/source = "extends Node2D
 #FRIENDLY PLANETS ONLY  NORMAL PLANETS
@@ -182,17 +182,17 @@ func orbit(delta):
 	
 "
 
-[sub_resource type="CircleShape2D" id=6]
-
-custom_solver_bias = 0.0
-radius = 50.0
-
 [sub_resource type="CircleShape2D" id=7]
 
 custom_solver_bias = 0.0
 radius = 50.0
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="CircleShape2D" id=8]
+
+custom_solver_bias = 0.0
+radius = 50.0
+
+[sub_resource type="GDScript" id=9]
 
 script/source = "extends Node2D
 #FRIENDLY PLANETS ONLY  NORMAL PLANETS
@@ -241,12 +241,12 @@ func orbit(delta):
 	
 "
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=10]
 
 custom_solver_bias = 0.0
 radius = 50.0
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=11]
 
 script/source = "extends Node2D
 #FRIENDLY PLANETS ONLY  NORMAL PLANETS
@@ -297,12 +297,12 @@ func orbit(delta):
 	
 "
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=12]
 
 custom_solver_bias = 0.0
 radius = 50.0
 
-[sub_resource type="GDScript" id=12]
+[sub_resource type="GDScript" id=13]
 
 script/source = "extends Node2D
 #FRIENDLY PLANETS ONLY  NORMAL PLANETS
@@ -353,7 +353,7 @@ func orbit(delta):
 	
 "
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=14]
 
 custom_solver_bias = 0.0
 radius = 50.0
@@ -383,6 +383,7 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="background/bg"]
 
+visibility/visible = false
 transform/pos = Vector2( 240, 0 )
 texture = ExtResource( 1 )
 region = true
@@ -390,7 +391,7 @@ region_rect = Rect2( 0, 0, 480, 1600 )
 
 [node name="foreground" type="ParallaxLayer" parent="background"]
 
-motion/scale = Vector2( 0.1, 0.1 )
+motion/scale = Vector2( 0.05, 0.05 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 0, 0 )
 
@@ -413,7 +414,7 @@ texture = ExtResource( 3 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-"anims/New Anim" = SubResource( 14 )
+"anims/New Anim" = SubResource( 2 )
 playback/active = true
 playback/speed = 0.2
 blend_times = [  ]
@@ -446,7 +447,7 @@ drag_margin/bottom = 0.2
 [node name="Earth" type="Node2D" parent="."]
 
 transform/pos = Vector2( 350, 400 )
-script/script = SubResource( 2 )
+script/script = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Earth"]
 
@@ -455,7 +456,7 @@ texture = ExtResource( 5 )
 [node name="PlanetBody" type="Area2D" parent="Earth"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 5.70786, -3.32957 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -466,7 +467,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Earth/PlanetBody"]
 
 transform/pos = Vector2( 5.70786, -3.32957 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
@@ -474,7 +475,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 350, 50 )
 transform/rot = 0.0702338
-script/script = SubResource( 5 )
+script/script = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Yellow"]
 
@@ -483,7 +484,7 @@ texture = ExtResource( 6 )
 [node name="PlanetBody1" type="Area2D" parent="Yellow"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 3.50854, -0.441605 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -494,7 +495,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Yellow/PlanetBody1"]
 
 transform/pos = Vector2( 3.50854, -0.441605 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
@@ -502,7 +503,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 350, -350 )
 transform/rot = 0.0702338
-script/script = SubResource( 8 )
+script/script = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="moon"]
 
@@ -511,7 +512,7 @@ texture = ExtResource( 7 )
 [node name="PlanetBody2" type="Area2D" parent="moon"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 10 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.17691, -3.58929 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -522,7 +523,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="moon/PlanetBody2"]
 
 transform/pos = Vector2( -0.17691, -3.58929 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
@@ -530,7 +531,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 350, -700 )
 transform/rot = 0.0702338
-script/script = SubResource( 10 )
+script/script = SubResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="green"]
 
@@ -539,7 +540,7 @@ texture = ExtResource( 8 )
 [node name="PlanetBody3" type="Area2D" parent="green"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 11 )
+shapes/0/shape = SubResource( 12 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 2.45999, -0.76825 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -550,7 +551,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="green/PlanetBody3"]
 
 transform/pos = Vector2( 2.45999, -0.76825 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
@@ -558,7 +559,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 350, -1050 )
 transform/rot = 0.0702338
-script/script = SubResource( 12 )
+script/script = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="red"]
 
@@ -567,7 +568,7 @@ texture = ExtResource( 9 )
 [node name="PlanetBody3" type="Area2D" parent="red"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 2.45999, -0.76825 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -578,7 +579,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="red/PlanetBody3"]
 
 transform/pos = Vector2( 2.45999, -0.76825 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 

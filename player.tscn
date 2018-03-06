@@ -22,8 +22,8 @@ func _ready():
 	set_fixed_process(true) 
 	pass
 func _fixed_process(delta): 
-#	if !stillFiring:
-#		claw.set_pos(Vector2(0,0))
+	if !stillFiring:
+		claw.set_pos(Vector2(0,0))
 		
 	Globals.set(\"playerPos\" , get_pos())
 	Globals.set(\"stillFiring\" , stillFiring)
@@ -73,8 +73,8 @@ func _fixed_process(delta):
 		shot =  collider.get_overlapping_areas()[0]
 		Globals.set(\"globalshot\" ,shot)
 		firingTween.stop_all()
-	if !body.get(\"stillFiring\"):
-		firingTween.reset_all()
+#	if !body.get(\"stillFiring\"):
+#		firingTween.reset_all()
 	 
 	if attached:
 		
@@ -153,7 +153,6 @@ __meta__ = {
 transform/pos = Vector2( -0.92215, -82.9109 )
 frames = SubResource( 3 )
 animation = "default"
-frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="claw"]

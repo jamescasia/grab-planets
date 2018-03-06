@@ -1,12 +1,18 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://pausebg.png" type="Texture" id=1]
-[ext_resource path="res://menupause.png" type="Texture" id=2]
+[ext_resource path="res://assets/pausebg.png" type="Texture" id=1]
+[ext_resource path="res://assets/menupause.png" type="Texture" id=2]
 [ext_resource path="res://font.fnt" type="BitmapFont" id=3]
-[ext_resource path="res://yes2.png" type="Texture" id=4]
-[ext_resource path="res://yes.png" type="Texture" id=5]
-[ext_resource path="res://no2.png" type="Texture" id=6]
-[ext_resource path="res://no.png" type="Texture" id=7]
+[ext_resource path="res://assets/yes2.png" type="Texture" id=4]
+[ext_resource path="res://assets/yes.png" type="Texture" id=5]
+[ext_resource path="res://assets/no2.png" type="Texture" id=6]
+[ext_resource path="res://assets/no.png" type="Texture" id=7]
+
+
+
+
+
+
 
 [sub_resource type="GDScript" id=1]
 

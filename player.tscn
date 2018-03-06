@@ -30,7 +30,7 @@ func _fixed_process(delta):
 
 			
 func _input(event):
-	if( event.type == InputEvent.SCREEN_TOUCH and event.pressed and event.pos.y > 110 or Input.is_action_pressed(\"spaced\") ) and !stillFiring: 
+	if( event.type == InputEvent.SCREEN_TOUCH and event.pressed and event.pos.y > 110 )or Input.is_action_pressed(\"spaced\")  and !stillFiring: 
 		firingTween.interpolate_property(claw, \"transform/pos\", Vector2(0,0), Vector2(   -740*sin(claw.get_rot()), -740*cos(claw.get_rot())),0.7, Tween.TRANS_CUBIC, Tween.TRANS_SINE)
 		firingTween.start() 
 		stillFiring = true
@@ -153,6 +153,7 @@ __meta__ = {
 transform/pos = Vector2( -0.92215, -82.9109 )
 frames = SubResource( 3 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="claw"]
